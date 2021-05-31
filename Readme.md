@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Anna Korsak](https://up.htmlacademy.ru/react/7/user/240292).
-* Наставник: `Неизвестно`.
+- Студент: [Anna Korsak](https://up.htmlacademy.ru/react/7/user/240292).
+- Наставник: [Сергей Сергеев](https://htmlacademy.ru/profile/id1205257).
 
 ---
 
