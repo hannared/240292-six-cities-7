@@ -1,7 +1,7 @@
 import React from 'react';
 import PlaceCard from '../../place-card/place-card';
 
-function Property() {
+function PropertyPage() {
   return (
     <div className="page">
       <header className="header">
@@ -314,7 +314,7 @@ function Property() {
                     id="review"
                     name="review"
                     placeholder="Tell how was your stay, what you like and what can be improved"
-                  ></textarea>
+                  />
                   <div className="reviews__button-wrapper">
                     <p className="reviews__help">
                       To submit review please make sure to set{' '}
@@ -353,4 +353,4 @@ function Property() {
   );
 }
 
-export default Property;
+export default PropertyPage;
