@@ -5,7 +5,7 @@ import PlaceCard from '../../place-card/place-card';
 function MainPage(props) {
   const { places } = props;
 
-  const cards = places.map((x) => <PlaceCard key={x} />);
+  const cards = places.map((place) => <PlaceCard key={place.id} />);
   const placesCount = places.length;
 
   return (
