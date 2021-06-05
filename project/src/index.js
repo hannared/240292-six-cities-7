@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app';
 
 const places = [
-  { title: 'test1' },
-  { title: 'test2' },
-  { title: 'test3' },
-  { title: 'test4' },
-  { title: 'test5' },
+  { id: 1, title: 'test1' },
+  { id: 2, title: 'test2' },
+  { id: 3, title: 'test3' },
+  { id: 4, title: 'test4' },
+  { id: 5, title: 'test5' },
 ];
 
 ReactDOM.render(

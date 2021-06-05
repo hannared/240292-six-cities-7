@@ -5,7 +5,7 @@ import PlaceCard from '../../place-card/place-card';
 function MainPage(props) {
   const { places } = props;
 
-  const cards = places.map((x) => <PlaceCard key={x} />);
+  const cards = places.map((place) => <PlaceCard key={place.id} />);
   const placesCount = places.length;
 
   return (
@@ -97,9 +97,9 @@ function MainPage(props) {
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
                   Popular
-                  {/* <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlink:href="#icon-arrow-select"></use>
-                  </svg> */}
+                  <svg className="places__sorting-arrow" width="7" height="4">
+                    <use xlinkHref="#icon-arrow-select"></use>
+                  </svg>
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
                   <li
