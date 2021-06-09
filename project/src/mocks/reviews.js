@@ -1,9 +1,3 @@
-// Аватар автора.
-// Имя автора.
-// Оценку. Оценка выводится в виде закрашенных звезд. Максимальное количество звёзд — 5.
-// Дата отзыва в формате: Месяц Год. Например: April 2019.
-// Текст отзыва.
-
 import dayjs from 'dayjs';
 import dayjsRandom from 'dayjs-random';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -21,7 +15,7 @@ const reviews = [
       'Pretium viverra suspendisse potenti nullam ac tortor. Tortor posuere ac ut consequat. Placerat orci nulla pellentesque dignissim enim. Pretium nibh ipsum consequat nisl vel pretium lectus. Suspendisse ultrices gravida dictum fusce.',
     date: dayjs.between('2018-06-10', '2021-07-06').format('MMMM D'),
     user: {
-      id: 1,
+      id: '1',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'John Doe',
       rating: '4',
@@ -35,6 +29,7 @@ const reviews = [
       'Pretium viverra suspendisse potenti nullam ac tortor. Tortor posuere ac ut consequat.',
     date: dayjs.between('2018-06-10', '2021-07-06').format('MMMM D'),
     user: {
+      id: '2',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'Alex Clark',
       rating: '5',
@@ -47,6 +42,7 @@ const reviews = [
     text: 'Pretium nibh ipsum consequat nisl vel pretium lectus. Suspendisse ultrices gravida dictum fusce.',
     date: dayjs.between('2018-06-10', '2021-07-06').format('MMMM D'),
     user: {
+      id: '3',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'Andy Moore',
       rating: '3',
@@ -60,6 +56,7 @@ const reviews = [
       'Amet cursus sit amet dictum. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Scelerisque felis imperdiet proin fermentum leo vel orci porta non. ',
     date: dayjs.between('2018-06-10', '2021-07-06').format('MMMM D'),
     user: {
+      id: '4',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'Davide Bloom',
       rating: '5',

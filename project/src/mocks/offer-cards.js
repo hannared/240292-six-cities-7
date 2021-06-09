@@ -1,4 +1,4 @@
-const propertyCard = [
+const offerCards = [
   {
     id: '1',
     photo: 'room.jpg',
@@ -44,4 +44,4 @@ const propertyCard = [
   },
 ];
 
-export default propertyCard;
+export default offerCards;

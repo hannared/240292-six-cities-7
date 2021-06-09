@@ -1,6 +1,6 @@
 const AVATAR_URL = 'https://i.pravatar.cc/74';
 
-const properties = [
+const offers = [
   {
     id: '1',
     photos: [
@@ -26,8 +26,8 @@ const properties = [
     isFavorite: true,
     type: 'apartment',
     rating: '4.8',
-    bedrooms: '3 Bedrooms',
-    maxAdults: 'Max 4 adults',
+    bedrooms: '3',
+    maxAdults: '4',
     price: '100',
     goods: ['Wifi', 'Heating', 'Kitchen', 'Cable TV'],
     host: {
@@ -198,4 +198,4 @@ const properties = [
   },
 ];
 
-export default properties;
+export default offers;
