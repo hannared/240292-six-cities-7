@@ -1,35 +1,25 @@
 import React from 'react';
-import { OfferType } from '../../types';
+import { OfferType } from '../../../types';
 
-function PlaceCard(props) {
+function FavoritePlaceCard(props) {
   const { offer } = props;
 
-  const { photos, isPremium, price, title, type, isFavorite, rating } = offer;
-
-  const PremiumFlag = isPremium ? (
-    <div className="place-card__mark">
-      <span>Premium</span>
-    </div>
-  ) : (
-    ''
-  );
+  const { photos, price, title, type, isFavorite, rating } = offer;
 
   return (
-    <article className="cities__place-card place-card">
-      {PremiumFlag}
-
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className="favorites__card place-card">
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="/#">
           <img
             className="place-card__image"
             src={photos[0]}
-            width="260"
-            height="200"
+            width="150"
+            height="110"
             alt="Place"
           />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -51,7 +41,7 @@ function PlaceCard(props) {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: '80%' }}></span>
+            <span style={{ width: '100%' }}></span>
             <span className="visually-hidden">{rating}</span>
           </div>
         </div>
@@ -63,9 +53,7 @@ function PlaceCard(props) {
     </article>
   );
 }
-
-PlaceCard.propTypes = {
+FavoritePlaceCard.propTypes = {
   offer: OfferType,
 };
-
-export default PlaceCard;
+export default FavoritePlaceCard;

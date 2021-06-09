@@ -34,17 +34,6 @@ export const OfferType = PropTypes.shape({
   }).isRequired,
 }).isRequired;
 
-export const OfferCardType = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
-  isPremium: PropTypes.bool.isRequired,
-  price: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
-  rating: PropTypes.string.isRequired,
-});
-
 export const ReviewType = {
   propertyId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,

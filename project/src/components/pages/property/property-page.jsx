@@ -1,14 +1,21 @@
 import React from 'react';
-import { OfferCardType } from '../../../types';
-import Logo from '../../logo';
-import PlaceCard from '../../place-card/place-card';
 import PropTypes from 'prop-types';
 
-function PropertyPage(props) {
-  const { offerCards } = props;
+import { OfferType } from '../../../types';
+import Logo from '../../logo';
+import PlaceCard from '../../place-card/place-card';
 
-  const cards = offerCards.map((offerCard) => (
-    <PlaceCard key={offerCard.id} offerCard={offerCard} />
+function PropertyPage(props) {
+  //const { id } = props.match.params;
+
+  const { offers } = props;
+
+  const property = offers.find((offer) => offer.id === 'id');
+
+  const { photo } = property;
+
+  const cards = offers.map((offer) => (
+    <PlaceCard key={offer.id} offers={offers} />
   ));
 
   return (
@@ -46,46 +53,22 @@ function PropertyPage(props) {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               <div className="property__image-wrapper">
-                <img
-                  className="property__image"
-                  src="img/room.jpg"
-                  alt="Studio"
-                />
+                <img className="property__image" src={photo} alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img
-                  className="property__image"
-                  src="img/apartment-01.jpg"
-                  alt="Studio"
-                />
+                <img className="property__image" src={photo} alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img
-                  className="property__image"
-                  src="img/apartment-02.jpg"
-                  alt="Studio"
-                />
+                <img className="property__image" src={photo} alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img
-                  className="property__image"
-                  src="img/apartment-03.jpg"
-                  alt="Studio"
-                />
+                <img className="property__image" src={photo} alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img
-                  className="property__image"
-                  src="img/studio-01.jpg"
-                  alt="Studio"
-                />
+                <img className="property__image" src={photo} alt="Studio" />
               </div>
               <div className="property__image-wrapper">
-                <img
-                  className="property__image"
-                  src="img/apartment-01.jpg"
-                  alt="Studio"
-                />
+                <img className="property__image" src={photo} alt="Studio" />
               </div>
             </div>
           </div>
@@ -349,7 +332,8 @@ function PropertyPage(props) {
 }
 
 PropertyPage.propTypes = {
-  offerCards: PropTypes.arrayOf(OfferCardType).isRequired,
+  offers: PropTypes.arrayOf(OfferType).isRequired,
+  //reviews: ReviewType,
 };
 
 export default PropertyPage;

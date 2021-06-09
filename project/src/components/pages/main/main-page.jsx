@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../../place-card/place-card';
-import { OfferCardType } from '../../../types';
+import { OfferType } from '../../../types';
 
 function MainPage(props) {
-  const { offerCards } = props;
+  const { offers } = props;
 
-  const cards = offerCards.map((offerCard) => (
-    <PlaceCard key={offerCard.id} offerCard={offerCard} />
+  const cards = offers.map((offer) => (
+    <PlaceCard key={offer.id} offer={offer} />
   ));
-  const offersCount = offerCards.length;
+  const offersCount = offers.length;
 
   return (
     <div className="page page--gray page--main">
@@ -137,7 +137,7 @@ function MainPage(props) {
 }
 
 MainPage.propTypes = {
-  offerCards: PropTypes.arrayOf(OfferCardType).isRequired,
+  offers: PropTypes.arrayOf(OfferType).isRequired,
 };
 
 export default MainPage;
