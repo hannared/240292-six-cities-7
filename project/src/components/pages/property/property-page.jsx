@@ -1,8 +1,16 @@
 import React from 'react';
+import { OfferCardType } from '../../../types';
 import Logo from '../../logo';
 import PlaceCard from '../../place-card/place-card';
+import PropTypes from 'prop-types';
 
-function PropertyPage() {
+function PropertyPage(props) {
+  const { offerCards } = props;
+
+  const cards = offerCards.map((offerCard) => (
+    <PlaceCard key={offerCard.id} offerCard={offerCard} />
+  ));
+
   return (
     <div className="page">
       <header className="header">
@@ -332,16 +340,16 @@ function PropertyPage() {
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <div className="near-places__list places__list">
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-            </div>
+            <div className="near-places__list places__list">{cards}</div>
           </section>
         </div>
       </main>
     </div>
   );
 }
+
+PropertyPage.propTypes = {
+  offerCards: PropTypes.arrayOf(OfferCardType).isRequired,
+};
 
 export default PropertyPage;

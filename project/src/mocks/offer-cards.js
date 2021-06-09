@@ -1,7 +1,7 @@
 const offerCards = [
   {
     id: '1',
-    photo: 'room.jpg',
+    photo: '/img/room.jpg',
     isPremium: true,
     price: 60,
     title: 'Beautiful & luxurious studio at great location',
@@ -12,7 +12,7 @@ const offerCards = [
 
   {
     id: '2',
-    photo: 'room.jpg',
+    photo: '/img/apartment-01.jpg',
     isPremium: false,
     price: 100,
     title: 'New room in the city center',
@@ -23,7 +23,7 @@ const offerCards = [
 
   {
     id: '3',
-    photo: 'room.jpg',
+    photo: '/img/apartment-02.jpg',
     isPremium: true,
     price: 150,
     title: 'Top rated hotel in the heart of the city',
@@ -34,7 +34,7 @@ const offerCards = [
 
   {
     id: '4',
-    photo: 'room.jpg',
+    photo: '/img/apartment-01.jpg',
     isPremium: true,
     price: 300,
     title: 'Home sweet Home',

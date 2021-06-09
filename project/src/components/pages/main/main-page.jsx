@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../../place-card/place-card';
+import { OfferCardType } from '../../../types';
 
 function MainPage(props) {
-  const { places } = props;
+  const { offerCards } = props;
 
-  const cards = places.map((place) => <PlaceCard key={place.id} />);
-  const placesCount = places.length;
+  const cards = offerCards.map((offerCard) => (
+    <PlaceCard key={offerCard.id} offerCard={offerCard} />
+  ));
+  const offersCount = offerCards.length;
 
   return (
     <div className="page page--gray page--main">
@@ -91,7 +94,7 @@ function MainPage(props) {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {placesCount} places to stay in Amsterdam
+                {offersCount} places to stay in Amsterdam
               </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -134,7 +137,7 @@ function MainPage(props) {
 }
 
 MainPage.propTypes = {
-  places: PropTypes.array.isRequired,
+  offerCards: PropTypes.arrayOf(OfferCardType).isRequired,
 };
 
 export default MainPage;

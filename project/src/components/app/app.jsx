@@ -7,17 +7,25 @@ import PropertyPage from '../pages/property/property-page';
 import FavoritesPage from '../pages/favorites/favorites-page';
 import LoginPage from '../pages/login/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
+import { OfferCardType, OfferType, ReviewType } from '../../types';
 
 function App(props) {
-  const { places } = props;
+  const { offers } = props;
+  const { offerCards } = props;
+  const { reviews } = props;
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
-          <MainPage places={places} />
+          <MainPage offerCards={offerCards} />
         </Route>
-        <Route exact path={AppRoute.PROPERTY}>
-          <PropertyPage />
+        <Route exact path={AppRoute.OFFER}>
+          <PropertyPage
+            offers={offers}
+            reviews={reviews}
+            offerCards={offerCards}
+          />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
           <FavoritesPage />
@@ -34,6 +42,8 @@ function App(props) {
 }
 
 App.propTypes = {
-  places: PropTypes.array.isRequired,
+  offers: PropTypes.arrayOf(OfferType).isRequired,
+  offerCards: PropTypes.arrayOf(OfferCardType).isRequired,
+  reviews: PropTypes.arrayOf(ReviewType).isRequired,
 };
 export default App;
