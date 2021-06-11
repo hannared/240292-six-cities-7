@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import PropertyCard from '../../property-card/property-card';
 import { OfferType } from '../../../types';
-import { AppRoute } from '../../../const';
 import Header from '../../header/header';
 
 function MainPage(props) {
   const { offers } = props;
 
   const [hoverCard, setHoverCard] = useState({});
+  // eslint-disable-next-line no-console
   console.log(hoverCard);
 
   const cards = offers.map((offer) => (

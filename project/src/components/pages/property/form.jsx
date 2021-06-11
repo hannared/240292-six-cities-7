@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Form() {
+function Form(props) {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">
@@ -97,6 +103,8 @@ function Form() {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
+        value={value}
+        onChange={handleChange}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
