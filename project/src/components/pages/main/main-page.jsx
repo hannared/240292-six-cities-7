@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../../place-card/place-card';
+import PropertyCard from '../../property-card/property-card';
 import { OfferType } from '../../../types';
 
 function MainPage(props) {
   const { offers } = props;
 
+  const [hoverCard, setHoverCard] = useState({});
+  console.log(hoverCard);
+
   const cards = offers.map((offer) => (
-    <PlaceCard key={offer.id} offer={offer} />
+    <PropertyCard
+      key={offer.id}
+      offer={offer}
+      onMouseEnter={() => setHoverCard(offer)}
+      onMouseLeave={() => setHoverCard(null)}
+    />
   ));
+
   const offersCount = offers.length;
 
   return (
@@ -50,7 +59,6 @@ function MainPage(props) {
           </div>
         </div>
       </header>
-
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">

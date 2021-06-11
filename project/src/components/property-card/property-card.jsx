@@ -1,7 +1,7 @@
 import React from 'react';
 import { OfferType } from '../../types';
 
-function PlaceCard(props) {
+function PropertyCard(props) {
   const { offer } = props;
 
   const { photos, isPremium, price, title, type, isFavorite, rating } = offer;
@@ -15,7 +15,7 @@ function PlaceCard(props) {
   );
 
   return (
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card" {...props}>
       {PremiumFlag}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
@@ -64,8 +64,8 @@ function PlaceCard(props) {
   );
 }
 
-PlaceCard.propTypes = {
+PropertyCard.propTypes = {
   offer: OfferType,
 };
 
-export default PlaceCard;
+export default PropertyCard;

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { OfferType } from '../../../types';
-import FavoritePlaceCard from './favorite-place-card';
+import FavoritePropertyCard from './favorite-property-card';
 
 function FavoriteCards(props) {
   const { city, offers } = props;
 
   const favoriteCards = offers.map((offer) => (
-    <FavoritePlaceCard key={offer.id} offer={offer} />
+    <FavoritePropertyCard key={offer.id} offer={offer} />
   ));
   return (
     <li className="favorites__locations-items">

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { OfferType, ReviewType } from '../../../types';
 import Logo from '../../logo';
-import PlaceCard from '../../place-card/place-card';
+import PropertyCard from '../../property-card/property-card';
 import ReviewsSection from './reviews-section';
 
 function PropertyPage(props) {
@@ -18,7 +18,7 @@ function PropertyPage(props) {
   const { photos } = property;
 
   const cards = offers.map((offer) => (
-    <PlaceCard key={offer.id} offer={offer} />
+    <PropertyCard key={offer.id} offer={offer} />
   ));
 
   return (
@@ -50,7 +50,6 @@ function PropertyPage(props) {
           </div>
         </div>
       </header>
-
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">

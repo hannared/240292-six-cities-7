@@ -4,7 +4,8 @@ import { ReviewType } from '../../../types';
 function Review(props) {
   const { review } = props;
 
-  const { avatar, comment, date, name, rating } = review;
+  const { user, comment, date, rating } = review;
+  const { avatar, name } = user;
 
   return (
     <li className="reviews__item">

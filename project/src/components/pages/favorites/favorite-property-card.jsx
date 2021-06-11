@@ -1,7 +1,7 @@
 import React from 'react';
 import { OfferType } from '../../../types';
 
-function FavoritePlaceCard(props) {
+function FavoritePropertyCard(props) {
   const { offer } = props;
 
   const { photos, price, title, type, isFavorite, rating } = offer;
@@ -53,7 +53,7 @@ function FavoritePlaceCard(props) {
     </article>
   );
 }
-FavoritePlaceCard.propTypes = {
+FavoritePropertyCard.propTypes = {
   offer: OfferType,
 };
-export default FavoritePlaceCard;
+export default FavoritePropertyCard;
