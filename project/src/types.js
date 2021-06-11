@@ -43,6 +43,6 @@ export const ReviewType = {
     id: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
   }).isRequired,
 }.isRequired;

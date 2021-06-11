@@ -4,7 +4,7 @@ import MainPage from '../pages/main/main-page';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import PropertyPage from '../pages/property/property-page';
-import FavoritesPage from '../pages/favorites/favorites-page';
+import FavoritesPage from '../pages/favorites/favorite-page';
 import LoginPage from '../pages/login/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import { OfferType, ReviewType } from '../../types';

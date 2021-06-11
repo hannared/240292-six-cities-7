@@ -18,7 +18,7 @@ const reviews = [
       id: '1',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'John Doe',
-      rating: '4',
+      rating: 4,
     },
   },
 
@@ -32,7 +32,7 @@ const reviews = [
       id: '2',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'Alex Clark',
-      rating: '5',
+      rating: 5,
     },
   },
 
@@ -45,7 +45,7 @@ const reviews = [
       id: '3',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'Andy Moore',
-      rating: '3',
+      rating: 3,
     },
   },
 
@@ -59,7 +59,7 @@ const reviews = [
       id: '4',
       avatar: `${AVATAR_URL}?rnd=${Math.random()}`,
       name: 'Davide Bloom',
-      rating: '5',
+      rating: 5,
     },
   },
 ];
