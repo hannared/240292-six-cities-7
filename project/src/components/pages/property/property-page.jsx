@@ -184,7 +184,7 @@ function PropertyPage(props) {
 
 PropertyPage.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
-  reviews: ReviewType,
+  reviews: PropTypes.arrayOf(ReviewType).isRequired,
 };
 
 export default PropertyPage;

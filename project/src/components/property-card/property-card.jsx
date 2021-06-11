@@ -1,5 +1,6 @@
 import React from 'react';
 import { OfferType } from '../../types';
+import { Link } from 'react-router-dom';
 
 function PropertyCard(props) {
   const { offer } = props;
@@ -19,7 +20,7 @@ function PropertyCard(props) {
       {PremiumFlag}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="/#">
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={photos[0]}
@@ -27,7 +28,7 @@ function PropertyCard(props) {
             height="200"
             alt="Place"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -56,7 +57,7 @@ function PropertyCard(props) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="/#">{title}</a>
+          <Link to={`/offer/${offer.id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

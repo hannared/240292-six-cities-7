@@ -39,7 +39,8 @@ const reviews = [
   {
     propertyId: '1',
     id: '3',
-    text: 'Pretium nibh ipsum consequat nisl vel pretium lectus. Suspendisse ultrices gravida dictum fusce.',
+    comment:
+      'Pretium nibh ipsum consequat nisl vel pretium lectus. Suspendisse ultrices gravida dictum fusce.',
     date: dayjs.between('2018-06-10', '2021-07-06').format('MMMM D'),
     user: {
       id: '3',
