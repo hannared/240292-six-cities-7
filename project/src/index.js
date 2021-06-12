@@ -1,18 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-
-const places = [
-  { id: 1, title: 'test1' },
-  { id: 2, title: 'test2' },
-  { id: 3, title: 'test3' },
-  { id: 4, title: 'test4' },
-  { id: 5, title: 'test5' },
-];
+import offers from './mocks/offers';
+import reviews from './mocks/reviews';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App places={places} />
+    <App offers={offers} reviews={reviews} />
   </React.StrictMode>,
   document.getElementById('root'),
 );
