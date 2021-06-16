@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import PropertyCard from '../../property-card/property-card';
 import { OfferType } from '../../../types';
 import Header from '../../header/header';
+import Map from './map';
 
 function MainPage(props) {
   const { offers } = props;
@@ -102,7 +103,9 @@ function MainPage(props) {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map offers={offers} />
+              </section>
             </div>
           </div>
         </div>
