@@ -6,6 +6,7 @@ import Logo from '../../logo';
 import PropertyCard from '../../property-card/property-card';
 import ReviewsSection from './reviews-section';
 import Navigation from '../../header/navigation';
+import Map from '../main/map';
 
 function PropertyPage(props) {
   // const { id } = props.match.params;
@@ -18,7 +19,9 @@ function PropertyPage(props) {
 
   const { photos } = property;
 
-  const cards = offers.map((offer) => (
+  const os = offers.slice(0, 3);
+
+  const cards = os.map((offer) => (
     <PropertyCard key={offer.id} offer={offer} />
   ));
 
@@ -149,7 +152,9 @@ function PropertyPage(props) {
               <ReviewsSection reviews={reviews} />
             </div>
           </div>
-          <section className="property__map map"></section>
+          <section className="property__map map">
+            <Map offers={os} />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">

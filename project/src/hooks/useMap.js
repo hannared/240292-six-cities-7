@@ -15,6 +15,7 @@ function useMap(mapRef, offers) {
           lng: location.longitude,
         },
         zoom: location.zoom,
+        zoomControl: false,
       });
 
       leaflet
