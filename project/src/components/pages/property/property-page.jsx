@@ -19,9 +19,9 @@ function PropertyPage(props) {
 
   const { photos } = property;
 
-  const os = offers.slice(0, 3);
+  const slicedOffers = offers.slice(0, 3);
 
-  const cards = os.map((offer) => (
+  const cards = slicedOffers.map((offer) => (
     <PropertyCard key={offer.id} offer={offer} />
   ));
 
@@ -153,7 +153,7 @@ function PropertyPage(props) {
             </div>
           </div>
           <section className="property__map map">
-            <Map offers={os} />
+            <Map offers={slicedOffers} hoverCard={property} />
           </section>
         </section>
         <div className="container">
