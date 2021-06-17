@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import { OfferType, ReviewType } from '../../../types';
 import Logo from '../../logo';
-import PropertyCard from '../../property-card/property-card';
 import ReviewsSection from './reviews-section';
 import Navigation from '../../header/navigation';
 import Map from '../main/map';
+import NearProperties from './near-properties';
 
 function PropertyPage(props) {
   // const { id } = props.match.params;
@@ -20,10 +20,6 @@ function PropertyPage(props) {
   const { photos } = property;
 
   const slicedOffers = offers.slice(0, 3);
-
-  const cards = slicedOffers.map((offer) => (
-    <PropertyCard key={offer.id} offer={offer} />
-  ));
 
   return (
     <div className="page">
@@ -157,12 +153,7 @@ function PropertyPage(props) {
           </section>
         </section>
         <div className="container">
-          <section className="near-places places">
-            <h2 className="near-places__title">
-              Other places in the neighbourhood
-            </h2>
-            <div className="near-places__list places__list">{cards}</div>
-          </section>
+          <NearProperties offers={slicedOffers} />
         </div>
       </main>
     </div>
