@@ -6,7 +6,8 @@ import { OfferType } from '../../../types';
 import useMap from '../../../hooks/useMap';
 
 function Map(props) {
-  const { offers } = props;
+  const { offers, hoverCard } = props;
+
   const mapRef = useRef(null);
   const map = useMap(mapRef, offers);
 
@@ -16,37 +17,43 @@ function Map(props) {
     iconAnchor: [15, 30],
   });
 
-  // const currentCustomIcon = leaflet.icon({
-  //   iconUrl: 'img/pin-active.svg',
-  //   iconSize: [30, 30],
-  //   iconAnchor: [15, 30],
-  // });
+  const currentCustomIcon = leaflet.icon({
+    iconUrl: 'img/pin-active.svg',
+    iconSize: [27, 39],
+    iconAnchor: [15, 30],
+  });
 
-  const points = offers.map((offer) => offer.location);
+  const propertyId = offers.map((o) => o.id);
 
   useEffect(() => {
     if (map) {
-      points.forEach((point) => {
+      offers.forEach((offer) => {
+        const { location } = offer;
+
         leaflet
           .marker(
             {
-              lat: point.latitude,
-              lng: point.longitude,
+              lat: location.latitude,
+              lng: location.longitude,
             },
             {
-              icon: defaultCustomIcon,
+              icon:
+                hoverCard !== null && hoverCard.id === offer.id
+                  ? currentCustomIcon
+                  : defaultCustomIcon,
             },
           )
           .addTo(map);
       });
     }
-  }, [map, offers.map((o) => o.id)]);
+  }, [map, propertyId]);
 
   return <div style={{ height: '100%' }} ref={mapRef}></div>;
 }
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
+  hoverCard: OfferType,
 };
 
 export default Map;
