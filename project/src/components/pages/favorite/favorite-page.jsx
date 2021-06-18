@@ -7,7 +7,7 @@ import { OfferType } from '../../../types';
 import FavoriteCards from './favorite-cards';
 import Navigation from '../../header/navigation';
 
-function FavoritesPage(props) {
+function FavoritePage(props) {
   const { offers } = props;
 
   const favorites = _.groupBy(_.filter(offers, 'isFavorite'), 'city.name');
@@ -52,7 +52,7 @@ function FavoritesPage(props) {
   );
 }
 
-FavoritesPage.propTypes = {
+FavoritePage.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
 };
-export default FavoritesPage;
+export default FavoritePage;

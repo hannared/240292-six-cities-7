@@ -10,8 +10,6 @@ function MainPage(props) {
   const { offers } = props;
 
   const [hoverCard, setHoverCard] = useState({});
-  // eslint-disable-next-line no-console
-  console.log(hoverCard);
 
   const cards = offers.map((offer) => (
     <PropertyCard

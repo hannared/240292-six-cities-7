@@ -64,7 +64,7 @@ const offers = [
       },
       name: 'Amsterdam',
     },
-    isPremium: true,
+    isPremium: false,
     isFavorite: false,
     type: 'room',
     rating: 5.0,

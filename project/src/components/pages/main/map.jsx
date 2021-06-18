@@ -38,7 +38,9 @@ function Map(props) {
             },
             {
               icon:
-                hoverCard !== null && hoverCard.id === offer.id
+                hoverCard !== null &&
+                hoverCard !== undefined &&
+                hoverCard.id === offer.id
                   ? currentCustomIcon
                   : defaultCustomIcon,
             },

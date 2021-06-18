@@ -4,7 +4,7 @@ import MainPage from '../pages/main/main-page';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import PropertyPage from '../pages/property/property-page';
-import FavoritesPage from '../pages/favorites/favorite-page';
+import FavoritePage from '../pages/favorite/favorite-page';
 import LoginPage from '../pages/login/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import { OfferType, ReviewType } from '../../types';
@@ -23,7 +23,7 @@ function App(props) {
           <PropertyPage offers={offers} reviews={reviews} />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
-          <FavoritesPage offers={offers} />
+          <FavoritePage offers={offers} />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <LoginPage />
