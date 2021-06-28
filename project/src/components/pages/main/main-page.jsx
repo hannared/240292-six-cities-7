@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import PropertyCard from '../../property-card/property-card';
 import { CityType, OfferType } from '../../../types';
@@ -14,7 +15,6 @@ import {
   Hamburg,
   Paris,
 } from '../../../mocks/offers';
-import { connect } from 'react-redux';
 
 function MainPage(props) {
   const { offers, city } = props;

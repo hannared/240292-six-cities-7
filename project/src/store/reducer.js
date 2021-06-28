@@ -4,7 +4,7 @@ import offers from '../mocks/offers';
 
 const initialState = {
   city: DEFAULT_CITY,
-  offers: offers,
+  offers: offers.filter((offer) => offer.city.name === DEFAULT_CITY.name),
 };
 
 const reducer = (state = initialState, action) => {
