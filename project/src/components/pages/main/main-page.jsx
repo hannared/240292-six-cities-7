@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import PropertyCard from '../../property-card/property-card';
-import { OfferType } from '../../../types';
+import { CityType, OfferType } from '../../../types';
 import Header from '../../header/header';
 import Map from './map';
 import CitiesList from './cities-list';
+import {
+  Amsterdam,
+  Brussels,
+  Cologne,
+  Dusseldorf,
+  Hamburg,
+  Paris,
+} from '../../../mocks/offers';
+import { connect } from 'react-redux';
 
 function MainPage(props) {
-  const { offers } = props;
+  const { offers, city } = props;
 
   const [hoverCard, setHoverCard] = useState({});
 
@@ -30,14 +39,7 @@ function MainPage(props) {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <CitiesList
-            cities={[
-              'Paris',
-              'Cologne',
-              'Brussels',
-              'Amsterdam',
-              'Hamburg',
-              'Dusseldorf',
-            ]}
+            cities={[Paris, Cologne, Brussels, Amsterdam, Hamburg, Dusseldorf]}
           />
         </div>
         <div className="cities">
@@ -45,7 +47,7 @@ function MainPage(props) {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {offersCount} places to stay in Amsterdam
+                {offersCount} places to stay in {city.name}
               </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -91,6 +93,12 @@ function MainPage(props) {
 
 MainPage.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
+  city: CityType,
 };
 
-export default MainPage;
+const mapStateToProps = (state) => ({ offers: state.offers, city: state.city });
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export { MainPage };
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

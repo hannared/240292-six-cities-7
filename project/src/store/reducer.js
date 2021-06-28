@@ -12,6 +12,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_CITY:
       return {
         ...state,
+        city: action.payload,
+        offers: offers.filter(
+          (offer) => offer.city.name === action.payload.name,
+        ),
       };
     case ActionType.GET_OFFERS:
       return {

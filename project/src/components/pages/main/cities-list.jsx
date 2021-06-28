@@ -6,7 +6,7 @@ import { CityType } from '../../../types';
 function CitiesList(props) {
   const { cities } = props;
 
-  const citiesList = cities.map((city) => <City key={city.id} city={city} />);
+  const citiesList = cities.map((city) => <City key={city.name} city={city} />);
 
   return (
     <section className="locations container">

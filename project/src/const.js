@@ -1,3 +1,5 @@
+import { Paris } from './mocks/offers';
+
 export const AppRoute = {
   LOGIN: '/login',
   FAVORITES: '/favorites',
@@ -5,4 +7,4 @@ export const AppRoute = {
   ROOT: '/',
 };
 
-export const DEFAULT_CITY = 'Paris';
+export const DEFAULT_CITY = Paris;
