@@ -4,3 +4,5 @@ export const AppRoute = {
   OFFER: '/offer/:id?',
   ROOT: '/',
 };
+
+export const DEFAULT_CITY = 'Paris';
