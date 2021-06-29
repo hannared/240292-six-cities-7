@@ -1,15 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { OfferType } from '../../../types';
+import { CityType, OfferType } from '../../../types';
 import useMap from '../../../hooks/useMap';
 
 function Map(props) {
-  const { offers, hoverCard } = props;
+  const { offers, city, hoverCard } = props;
 
   const mapRef = useRef(null);
-  const map = useMap(mapRef, offers);
+  const map = useMap(mapRef, city, offers);
 
   const defaultCustomIcon = leaflet.icon({
     iconUrl: 'img/pin.svg',
@@ -56,6 +58,13 @@ function Map(props) {
 Map.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
   hoverCard: OfferType,
+  city: CityType,
 };
 
-export default Map;
+const mapStateToProps = (state) => ({ offers: state.offers, city: state.city });
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export { Map };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);
