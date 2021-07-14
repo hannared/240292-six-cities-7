@@ -1,6 +1,7 @@
 import { DEFAULT_CITY } from '../const';
 import { ActionType } from './action';
 import offers from '../mocks/offers';
+import { orderBy } from 'lodash';
 
 const initialState = {
   city: DEFAULT_CITY,
@@ -24,6 +25,32 @@ const reducer = (state = initialState, action) => {
           (offer) => offer.city.name === action.payload.name,
         ),
       };
+
+    case ActionType.SORTING_POPULAR:
+      return {
+        ...state,
+        offers: offers,
+      };
+
+    case ActionType.SORTING_ASC:
+      return {
+        ...state,
+        offers: orderBy(offers, ['price'], ['asc']),
+      };
+
+    case ActionType.SORTING_DESC:
+      debugger;
+      return {
+        ...state,
+        offers: orderBy(offers, ['price'], ['desc']),
+      };
+
+    case ActionType.SORTING_TOP_RATING:
+      return {
+        ...state,
+        offers: orderBy(offers, ['rating'], ['desc']),
+      };
+
     default:
       return state;
   }

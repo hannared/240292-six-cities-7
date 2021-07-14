@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export default function Sorting() {
+import { connect } from 'react-redux';
+import { ActionCreator, ActionType } from '../../../store/action';
+
+export function Sorting(props) {
   const [opened, setOpened] = useState(false);
+
+  const { runSorting } = props;
 
   const openSorting = () => {
     setOpened(!opened);
@@ -21,19 +27,61 @@ export default function Sorting() {
           opened ? 'opened' : 'closed'
         }`}
       >
-        <li className="places__option places__option--active" tabIndex="0">
+        <li
+          className="places__option places__option--active"
+          tabIndex="0"
+          onClick={(e) => {
+            e.stopPropagation();
+            runSorting(ActionType.SORTING_POPULAR);
+          }}
+        >
           Popular
         </li>
-        <li className="places__option" tabIndex="0">
+        <li
+          className="places__option"
+          tabIndex="0"
+          onClick={(e) => {
+            e.stopPropagation();
+            runSorting(ActionType.SORTING_ASC);
+          }}
+        >
           Price: low to high
         </li>
-        <li className="places__option" tabIndex="0">
+        <li
+          className="places__option"
+          tabIndex="0"
+          onClick={(e) => {
+            e.stopPropagation();
+            runSorting(ActionType.SORTING_DESC);
+          }}
+        >
           Price: high to low
         </li>
-        <li className="places__option" tabIndex="0">
+        <li
+          className="places__option"
+          tabIndex="0"
+          onClick={(e) => {
+            e.stopPropagatgition();
+            runSorting(ActionType.SORTING_TOP_RATING);
+          }}
+        >
           Top rated first
         </li>
       </ul>
     </form>
   );
 }
+
+Sorting.propTypes = {
+  runSorting: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  runSorting(type) {
+    dispatch(ActionCreator.runSorting(type));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sorting);
