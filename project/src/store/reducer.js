@@ -39,7 +39,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case ActionType.SORTING_DESC:
-      debugger;
       return {
         ...state,
         offers: orderBy(offers, ['price'], ['desc']),

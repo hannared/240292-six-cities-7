@@ -33,6 +33,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagation();
             runSorting(ActionType.SORTING_POPULAR);
+            openSorting();
           }}
         >
           Popular
@@ -43,6 +44,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagation();
             runSorting(ActionType.SORTING_ASC);
+            openSorting();
           }}
         >
           Price: low to high
@@ -53,6 +55,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagation();
             runSorting(ActionType.SORTING_DESC);
+            openSorting();
           }}
         >
           Price: high to low
@@ -63,6 +66,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagatgition();
             runSorting(ActionType.SORTING_TOP_RATING);
+            openSorting();
           }}
         >
           Top rated first
