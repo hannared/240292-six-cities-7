@@ -1,11 +1,12 @@
-import { DEFAULT_CITY } from '../const';
+import { AuthorizationStatus, DEFAULT_CITY } from '../const';
 import { ActionType } from './action';
-import offers from '../mocks/offers';
 import { orderBy } from 'lodash';
 
 const initialState = {
   city: DEFAULT_CITY,
-  offers: offers.filter((offer) => offer.city.name === DEFAULT_CITY.name),
+  offers: [],
+  // offers: offers.filter((offer) => offer.city.name === DEFAULT_CITY.name),
+  authorizationStatus: AuthorizationStatus.UNKNOWN,
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,40 +15,55 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         city: action.payload,
-        offers: offers.filter(
+        offers: state.offers.filter(
           (offer) => offer.city.name === action.payload.name,
         ),
       };
     case ActionType.GET_OFFERS:
       return {
         ...state,
-        offers: offers.filter(
+        offers: state.offers.filter(
           (offer) => offer.city.name === action.payload.name,
         ),
       };
 
     case ActionType.SORTING_POPULAR:
-      return {
-        ...state,
-        offers: offers,
-      };
+      return state;
 
     case ActionType.SORTING_ASC:
       return {
         ...state,
-        offers: orderBy(offers, ['price'], ['asc']),
+        offers: orderBy(state.offers, ['price'], ['asc']),
       };
 
     case ActionType.SORTING_DESC:
       return {
         ...state,
-        offers: orderBy(offers, ['price'], ['desc']),
+        offers: orderBy(state.offers, ['price'], ['desc']),
       };
 
     case ActionType.SORTING_TOP_RATING:
       return {
         ...state,
-        offers: orderBy(offers, ['rating'], ['desc']),
+        offers: orderBy(state.offers, ['rating'], ['desc']),
+      };
+
+    case ActionType.REQUIRED_AUTHORIZATION:
+      return {
+        ...state,
+        authorizationStatus: action.payload,
+      };
+
+    case ActionType.LOGOUT:
+      return {
+        ...state,
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
+      };
+
+    case ActionType.SET_OFFERS:
+      return {
+        ...state,
+        offers: action.payload,
       };
 
     default:
