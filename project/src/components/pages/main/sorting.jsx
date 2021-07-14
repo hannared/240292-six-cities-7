@@ -9,14 +9,18 @@ export function Sorting(props) {
 
   const { runSorting } = props;
 
-  const openSorting = () => {
+  const toggleSorting = () => {
     setOpened(!opened);
   };
 
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
-      <span onClick={openSorting} className="places__sorting-type" tabIndex="0">
+      <span
+        onClick={toggleSorting}
+        className="places__sorting-type"
+        tabIndex="0"
+      >
         Popular
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
@@ -33,7 +37,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagation();
             runSorting(ActionType.SORTING_POPULAR);
-            openSorting();
+            toggleSorting();
           }}
         >
           Popular
@@ -44,7 +48,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagation();
             runSorting(ActionType.SORTING_ASC);
-            openSorting();
+            toggleSorting();
           }}
         >
           Price: low to high
@@ -55,7 +59,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagation();
             runSorting(ActionType.SORTING_DESC);
-            openSorting();
+            toggleSorting();
           }}
         >
           Price: high to low
@@ -66,7 +70,7 @@ export function Sorting(props) {
           onClick={(e) => {
             e.stopPropagatgition();
             runSorting(ActionType.SORTING_TOP_RATING);
-            openSorting();
+            toggleSorting();
           }}
         >
           Top rated first
