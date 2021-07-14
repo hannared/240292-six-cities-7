@@ -6,12 +6,14 @@ import { ActionCreator } from '../../../store/action';
 import { CityType } from '../../../types';
 
 function City(props) {
-  const { city, onSetCity } = props;
+  const { city, onSetCity, selectedCity } = props;
 
   return (
     <li className="locations__item">
       <a
-        className="locations__item-link tabs__item"
+        className={`locations__item-link tabs__item ${
+          city.name === selectedCity.name ? 'tabs__item--active' : ''
+        }`}
         href="/#"
         onClick={() => {
           onSetCity(city);
@@ -25,10 +27,13 @@ function City(props) {
 
 City.propTypes = {
   city: CityType,
+  selectedCity: CityType,
   onSetCity: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  selectedCity: state.city,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSetCity(city) {
