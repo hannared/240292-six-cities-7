@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AuthorizationStatus } from '../const';
 
 const BACKEND_URL = 'https://7.react.pages.academy/six-cities';
 const REQUEST_TIMEOUT = 5000;
@@ -34,3 +35,6 @@ export const createAPI = (onUnauthorized) => {
 
   return api;
 };
+
+export const isCheckedAuth = (authorizationStatus) =>
+  authorizationStatus === AuthorizationStatus.UNKNOWN;

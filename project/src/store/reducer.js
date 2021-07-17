@@ -7,6 +7,7 @@ const initialState = {
   offers: [],
   // offers: offers.filter((offer) => offer.city.name === DEFAULT_CITY.name),
   authorizationStatus: AuthorizationStatus.UNKNOWN,
+  isDataLoaded: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -64,6 +65,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         offers: action.payload,
+        isDataLoaded: true,
       };
 
     default:
