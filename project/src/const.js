@@ -1,4 +1,4 @@
-import { Paris } from './mocks/offers';
+import { Paris } from './mocks/cities';
 
 export const AppRoute = {
   LOGIN: '/login',

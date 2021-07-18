@@ -4,10 +4,49 @@ import { orderBy } from 'lodash';
 
 const initialState = {
   city: DEFAULT_CITY,
+  serverOffers: [],
   offers: [],
-  // offers: offers.filter((offer) => offer.city.name === DEFAULT_CITY.name),
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
+};
+
+// prettier-ignore
+const adaptOfferServerToClient = (offer) => {
+  const newOffer = {
+    id: offer.id.toString(),
+    photos: offer.images,
+    title: offer.title,
+    description: offer.description,
+    city: {
+      location: {
+        latitude: offer.city.location.latitude,
+        longitude: offer.city.location.longitude,
+        zoom: offer.city.location.zoom,
+      },
+      name: offer.city.name,
+    },
+    isPremium: offer.is_premium,
+    isFavorite: offer.is_favorite,
+    type: offer.type,
+    rating: offer.rating,
+    bedrooms: offer.bedrooms,
+    maxAdults: offer.max_adults,
+    price: offer.price,
+    goods: offer.goods,
+    host: {
+      id: offer.host.id.toString(),
+      avatar: offer.host.avatar_url,
+      name: offer.host.name,
+      isPro: offer.host.is_pro,
+    },
+    location: {
+      latitude: offer.location.latitude,
+      longitude: offer.location.longitude,
+      zoom: offer.location.zoom,
+    },
+  };
+
+  return newOffer;
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,14 +55,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         city: action.payload,
-        offers: state.offers.filter(
+        offers: state.serverOffers.filter(
           (offer) => offer.city.name === action.payload.name,
         ),
       };
     case ActionType.GET_OFFERS:
       return {
         ...state,
-        offers: state.offers.filter(
+        offers: state.serverOffers.filter(
           (offer) => offer.city.name === action.payload.name,
         ),
       };
@@ -64,7 +103,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_OFFERS:
       return {
         ...state,
-        offers: action.payload,
+        serverOffers: action.payload.map(adaptOfferServerToClient),
+        offers: action.payload
+          .map(adaptOfferServerToClient)
+          .filter((offer) => offer.city.name === DEFAULT_CITY.name),
         isDataLoaded: true,
       };
 

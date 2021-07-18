@@ -34,7 +34,7 @@ export const OfferType = PropTypes.shape({
     longitude: PropTypes.number.isRequired,
     zoom: PropTypes.number.isRequired,
   }).isRequired,
-}).isRequired;
+});
 
 export const ReviewType = PropTypes.shape({
   propertyId: PropTypes.string.isRequired,

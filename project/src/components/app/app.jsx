@@ -54,6 +54,7 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   authorizationStatus: state.authorizationStatus,
   isDataLoaded: state.isDataLoaded,
+  offers: state.offers,
 });
 
 export { App };
