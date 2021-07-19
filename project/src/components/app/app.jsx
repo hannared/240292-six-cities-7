@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MainPage from '../pages/main/main-page';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router as BrowserRouter, Route, Switch } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import PropertyPage from '../pages/property/property-page';
 import FavoritePage from '../pages/favorite/favorite-page';
@@ -11,6 +11,7 @@ import NotFoundPage from '../pages/not-found-page/not-found-page';
 import { OfferType, ReviewType } from '../../types';
 import { isCheckedAuth } from '../../services/api';
 import LoadingScreen from '../loading-screen/loading-screen';
+import browserHistory from '../../browser-history';
 
 function App(props) {
   const { authorizationStatus, isDataLoaded } = props;
@@ -22,7 +23,7 @@ function App(props) {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route exact path={AppRoute.ROOT}>
           <MainPage offers={offers} />
