@@ -14,7 +14,7 @@ import {
   Dusseldorf,
   Hamburg,
   Paris,
-} from '../../../mocks/offers';
+} from '../../../mocks/cities';
 import Sorting from './sorting';
 
 function MainPage(props) {

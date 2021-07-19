@@ -23,7 +23,7 @@ function PropertyCard(props) {
         <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
-            src={photos[0]}
+            src={photos.length > 0 ? photos[0] : null}
             width="260"
             height="200"
             alt="Place"

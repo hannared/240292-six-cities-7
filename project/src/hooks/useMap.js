@@ -28,6 +28,12 @@ function useMap(mapRef, city, offers) {
         .addTo(instance);
 
       setMap(instance);
+    } else {
+      if (map !== null) {
+        map.panTo(
+          new leaflet.LatLng(city.location.latitude, city.location.longitude),
+        );
+      }
     }
   }, [mapRef, map, city, offers]);
 
