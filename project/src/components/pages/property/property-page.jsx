@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { OfferType, ReviewType } from '../../../types';
@@ -11,9 +12,9 @@ import NearProperties from './near-properties';
 function PropertyPage(props) {
   // const { id } = props.match.params;
 
-  const { offers, reviews } = props;
+  const { id } = useParams();
 
-  const { id } = offers[0];
+  const { offers, reviews } = props;
 
   const property = offers.find((offer) => offer.id === id);
 
