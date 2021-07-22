@@ -1,3 +1,5 @@
+import { AppRoute } from '../const';
+
 export const ActionType = {
   SET_CITY: 'city/set',
   GET_OFFERS: 'offers/get',
@@ -8,6 +10,7 @@ export const ActionType = {
   SORTING_TOP_RATING: 'sorting/top',
   REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
   LOGOUT: 'user/logout',
+  REDIRECT_TO_ROUTE: 'user/redirectToRoute',
 };
 
 export const ActionCreator = {
@@ -31,5 +34,10 @@ export const ActionCreator = {
   }),
   logout: () => ({
     type: ActionType.LOGOUT,
+  }),
+
+  redirectToRoute: (url) => ({
+    type: ActionType.REDIRECT_TO_ROUTE,
+    payload: AppRoute.ROOT,
   }),
 };
