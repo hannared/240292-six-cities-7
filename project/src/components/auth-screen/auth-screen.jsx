@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Logo from '../logo';
+import { login } from '../../store/api-actions';
 
 function AuthScreen({ onSubmit }) {
   const loginRef = useRef();
@@ -9,7 +10,6 @@ function AuthScreen({ onSubmit }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-
     onSubmit({
       login: loginRef.current.value,
       password: passwordRef.current.value,

@@ -11,6 +11,7 @@ import { reducer } from './store/reducer';
 import { ActionCreator } from './store/action';
 import { AuthorizationStatus } from './const';
 import { checkAuth, fetchOffersList } from './store/api-actions';
+import { redirect } from './store/middlewares/redirect';
 
 const api = createAPI(() =>
   store.dispatch(
@@ -20,7 +21,10 @@ const api = createAPI(() =>
 
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))),
+  composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument(api)),
+    applyMiddleware(redirect),
+  ),
 );
 
 store.dispatch(checkAuth());
