@@ -47,7 +47,6 @@ function App(props) {
 
 App.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
-  reviews: PropTypes.arrayOf(ReviewType).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   isDataLoaded: PropTypes.bool.isRequired,
 };

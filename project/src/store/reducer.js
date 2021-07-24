@@ -52,11 +52,11 @@ const adaptOfferServerToClient = (offer) => {
 
 const adaptCommentServerToClient = (comment) => {
   const newComment = {
-    id: comment.id,
+    id: comment.id.toString(),
     comment: comment.comment,
-    date: comment.data,
+    date: comment.date,
     user: {
-      id: comment.user.id,
+      id: comment.user.id.toString(),
       avatar: comment.user.avatar_url,
       name: comment.user.name,
     },

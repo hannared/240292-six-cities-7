@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import { createAPI } from './services/api';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './components/app/app';
-import reviews from './mocks/reviews';
 import { reducer } from './store/reducer';
 import { ActionCreator } from './store/action';
 import { AuthorizationStatus } from './const';
@@ -33,7 +32,7 @@ store.dispatch(fetchOffersList());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App reviews={reviews} />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

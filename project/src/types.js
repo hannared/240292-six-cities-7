@@ -40,10 +40,10 @@ export const ReviewType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
   user: PropTypes.shape({
     id: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
   }).isRequired,
-}).isRequired;
+});
