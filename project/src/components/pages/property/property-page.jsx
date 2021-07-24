@@ -9,16 +9,20 @@ import ReviewsSection from './reviews-section';
 import Navigation from '../../header/navigation';
 import Map from '../main/map';
 import NearProperties from './near-properties';
-import { fetchCommentsList } from '../../../store/api-actions';
+import {
+  fetchCommentsList,
+  fetchNearbyOffersList,
+} from '../../../store/api-actions';
 
 function PropertyPage(props) {
   const { id } = useParams();
 
-  const { offers, fetchComments } = props;
+  const { offers, fetchComments, fetchNearbyOffers } = props;
 
   const property = offers.find((offer) => offer.id === id);
 
   fetchComments(property);
+  fetchNearbyOffers(property);
 
   const {
     photos,
@@ -163,7 +167,7 @@ function PropertyPage(props) {
           </section>
         </section>
         <div className="container">
-          <NearProperties offers={slicedOffers} />
+          <NearProperties />
         </div>
       </main>
     </div>
@@ -173,6 +177,7 @@ function PropertyPage(props) {
 PropertyPage.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
   fetchComments: PropTypes.func.isRequired,
+  fetchNearbyOffers: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = () => ({});
@@ -180,6 +185,10 @@ const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch) => ({
   fetchComments(offer) {
     dispatch(fetchCommentsList(offer));
+  },
+
+  fetchNearbyOffers(offer) {
+    dispatch(fetchNearbyOffersList(offer));
   },
 });
 

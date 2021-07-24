@@ -7,6 +7,7 @@ const initialState = {
   serverOffers: [],
   offers: [],
   comments: [],
+  nearbyOffers: [],
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
 };
@@ -130,6 +131,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         comments: action.payload.map(adaptCommentServerToClient),
+      };
+
+    case ActionType.SET_NEARBY_OFFERS:
+      return {
+        ...state,
+        nearbyOffers: action.payload.map(adaptOfferServerToClient),
       };
 
     default:

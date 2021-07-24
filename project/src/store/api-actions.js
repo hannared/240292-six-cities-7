@@ -11,6 +11,11 @@ export const fetchCommentsList = (offer) => (dispatch, _getState, api) =>
     .get(APIRoute.COMMENTS.replace(':hotel_id', offer.id))
     .then(({ data }) => dispatch(ActionCreator.setComments(data)));
 
+export const fetchNearbyOffersList = (offer) => (dispatch, _getState, api) =>
+  api
+    .get(APIRoute.NEARBY_HOTELS.replace(':hotel_id', offer.id))
+    .then(({ data }) => dispatch(ActionCreator.setNearbyOffers(data)));
+
 export const checkAuth = () => (dispatch, _getState, api) =>
   api
     .get(APIRoute.LOGIN)

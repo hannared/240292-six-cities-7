@@ -23,4 +23,5 @@ export const APIRoute = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   COMMENTS: '/comments/:hotel_id',
+  NEARBY_HOTELS: '/hotels/:hotel_id/nearby',
 };

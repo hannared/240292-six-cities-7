@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 
 import PropertyCard from '../../property-card/property-card';
 import { OfferType } from '../../../types';
+import { connect } from 'react-redux';
 
 function NearProperties(props) {
   const { offers } = props;
+
+  debugger;
 
   const cards = offers.map((offer) => (
     <PropertyCard key={offer.id} offer={offer} />
@@ -23,4 +26,12 @@ NearProperties.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
 };
 
-export default NearProperties;
+const mapStateToProps = (state) => ({
+  offers: state.nearbyOffers,
+});
+
+const mapDispatchToProps = () => ({});
+
+export { NearProperties };
+
+export default connect(mapStateToProps, mapDispatchToProps)(NearProperties);

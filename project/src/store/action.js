@@ -5,6 +5,7 @@ export const ActionType = {
   GET_OFFERS: 'offers/get',
   SET_OFFERS: 'offers/set',
   SET_COMMENTS: 'comments/set',
+  SET_NEARBY_OFFERS: 'nearbyOffers/set',
   SORTING_POPULAR: 'sorting/popular',
   SORTING_ASC: 'sorting/asc',
   SORTING_DESC: 'sorting/desc',
@@ -32,6 +33,11 @@ export const ActionCreator = {
   setComments: (comments) => ({
     type: ActionType.SET_COMMENTS,
     payload: comments,
+  }),
+
+  setNearbyOffers: (offers) => ({
+    type: ActionType.SET_NEARBY_OFFERS,
+    payload: offers,
   }),
 
   requireAuthorization: (status) => ({
