@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { ReviewType } from '../../../types';
 import Review from './review';
 import Form from './form';
+import { connect } from 'react-redux';
 
 function ReviewsSection(props) {
   const { reviews } = props;
@@ -28,4 +29,12 @@ ReviewsSection.propTypes = {
   reviews: PropTypes.arrayOf(ReviewType).isRequired,
 };
 
-export default ReviewsSection;
+const mapStateToProps = (state) => ({
+  reviews: state.comments,
+});
+
+const mapDispatchToProps = () => ({});
+
+export { ReviewsSection };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewsSection);

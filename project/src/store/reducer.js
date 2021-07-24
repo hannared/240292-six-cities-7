@@ -6,6 +6,7 @@ const initialState = {
   city: DEFAULT_CITY,
   serverOffers: [],
   offers: [],
+  comments: [],
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
 };
@@ -47,6 +48,21 @@ const adaptOfferServerToClient = (offer) => {
   };
 
   return newOffer;
+};
+
+const adaptCommentServerToClient = (comment) => {
+  const newComment = {
+    id: comment.id,
+    comment: comment.comment,
+    date: comment.data,
+    user: {
+      id: comment.user.id,
+      avatar: comment.user.avatar_url,
+      name: comment.user.name,
+    },
+    rating: comment.rating,
+  };
+  return newComment;
 };
 
 const reducer = (state = initialState, action) => {
@@ -108,6 +124,12 @@ const reducer = (state = initialState, action) => {
           .map(adaptOfferServerToClient)
           .filter((offer) => offer.city.name === DEFAULT_CITY.name),
         isDataLoaded: true,
+      };
+
+    case ActionType.SET_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload.map(adaptCommentServerToClient),
       };
 
     default:

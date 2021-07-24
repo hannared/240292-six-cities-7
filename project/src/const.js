@@ -19,7 +19,8 @@ export const APIRoute = {
   HOTELS: '/hotels',
   HOTEL: '/hotels/:id',
   FAVORITE: '/favorite',
-  IS_FAVORITE: '/favorite/: hotel_id/: status',
+  IS_FAVORITE: '/favorite/:hotel_id/:status',
   LOGIN: '/login',
   LOGOUT: '/logout',
+  COMMENTS: '/comments/:hotel_id',
 };

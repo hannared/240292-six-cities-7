@@ -6,6 +6,11 @@ export const fetchOffersList = () => (dispatch, _getState, api) =>
     .get(APIRoute.HOTELS)
     .then(({ data }) => dispatch(ActionCreator.setOffers(data)));
 
+export const fetchCommentsList = (offer) => (dispatch, _getState, api) =>
+  api
+    .get(APIRoute.COMMENTS.replace(':hotel_id', offer.id))
+    .then(({ data }) => dispatch(ActionCreator.setComments(data)));
+
 export const checkAuth = () => (dispatch, _getState, api) =>
   api
     .get(APIRoute.LOGIN)

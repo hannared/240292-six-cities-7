@@ -1,20 +1,24 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import { OfferType, ReviewType } from '../../../types';
+import { OfferType } from '../../../types';
 import Logo from '../../logo';
 import ReviewsSection from './reviews-section';
 import Navigation from '../../header/navigation';
 import Map from '../main/map';
 import NearProperties from './near-properties';
+import { fetchCommentsList } from '../../../store/api-actions';
 
 function PropertyPage(props) {
   const { id } = useParams();
 
-  const { offers, reviews } = props;
+  const { offers, fetchComments } = props;
 
   const property = offers.find((offer) => offer.id === id);
+
+  fetchComments(property);
 
   const {
     photos,
@@ -151,7 +155,7 @@ function PropertyPage(props) {
                   <p className="property__text">{description}</p>
                 </div>
               </div>
-              <ReviewsSection reviews={reviews} />
+              <ReviewsSection />
             </div>
           </div>
           <section className="property__map map">
@@ -168,7 +172,17 @@ function PropertyPage(props) {
 
 PropertyPage.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
-  reviews: PropTypes.arrayOf(ReviewType).isRequired,
+  fetchComments: PropTypes.func.isRequired,
 };
 
-export default PropertyPage;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchComments(offer) {
+    dispatch(fetchCommentsList(offer));
+  },
+});
+
+export { PropertyPage };
+
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyPage);

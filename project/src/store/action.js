@@ -4,6 +4,7 @@ export const ActionType = {
   SET_CITY: 'city/set',
   GET_OFFERS: 'offers/get',
   SET_OFFERS: 'offers/set',
+  SET_COMMENTS: 'comments/set',
   SORTING_POPULAR: 'sorting/popular',
   SORTING_ASC: 'sorting/asc',
   SORTING_DESC: 'sorting/desc',
@@ -26,6 +27,11 @@ export const ActionCreator = {
   setOffers: (offers) => ({
     type: ActionType.SET_OFFERS,
     payload: offers,
+  }),
+
+  setComments: (comments) => ({
+    type: ActionType.SET_COMMENTS,
+    payload: comments,
   }),
 
   requireAuthorization: (status) => ({
