@@ -162,7 +162,7 @@ function PropertyPage(props) {
                   <p className="property__text">{description}</p>
                 </div>
               </div>
-              <ReviewsSection />
+              <ReviewsSection offer={property} />
             </div>
           </div>
           <section className="property__map map">

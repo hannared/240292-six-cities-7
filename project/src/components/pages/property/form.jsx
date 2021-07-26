@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
+import { useRef } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { createComment } from '../../../store/api-actions';
+import { OfferType } from '../../../types';
 
 function Form(props) {
-  const [value, setValue] = useState('');
+  const { onSubmit, offer } = props;
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const [rating, setRating] = useState(0);
+  const commentRef = useRef();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onSubmit(offer, commentRef.current.value, rating);
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
@@ -19,6 +34,8 @@ function Form(props) {
           value="5"
           id="5-stars"
           type="radio"
+          checked={rating === '5'}
+          onChange={() => setRating(5)}
         />
         <label
           htmlFor="5-stars"
@@ -36,6 +53,8 @@ function Form(props) {
           value="4"
           id="4-stars"
           type="radio"
+          checked={rating === '4'}
+          onChange={() => setRating(4)}
         />
         <label
           htmlFor="4-stars"
@@ -53,6 +72,8 @@ function Form(props) {
           value="3"
           id="3-stars"
           type="radio"
+          checked={rating === '3'}
+          onChange={() => setRating(3)}
         />
         <label
           htmlFor="3-stars"
@@ -70,6 +91,8 @@ function Form(props) {
           value="2"
           id="2-stars"
           type="radio"
+          checked={rating === '2'}
+          onChange={() => setRating(2)}
         />
         <label
           htmlFor="2-stars"
@@ -87,6 +110,8 @@ function Form(props) {
           value="1"
           id="1-star"
           type="radio"
+          checked={rating === '1'}
+          onChange={() => setRating(1)}
         />
         <label
           htmlFor="1-star"
@@ -103,8 +128,7 @@ function Form(props) {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={value}
-        onChange={handleChange}
+        ref={commentRef}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -124,4 +148,17 @@ function Form(props) {
   );
 }
 
-export default Form;
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  offer: OfferType,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(offer, comment, rating) {
+    dispatch(createComment(offer, comment, rating));
+  },
+});
+
+export { Form };
+
+export default connect(null, mapDispatchToProps)(Form);
