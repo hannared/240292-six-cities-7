@@ -25,32 +25,38 @@ function Map(props) {
     iconAnchor: [15, 30],
   });
 
-  const propertyId = offers.map((o) => o.id);
+  const ids = offers.map((o) => o.id);
 
   useEffect(() => {
     if (map) {
+      map.eachLayer((layer) => {
+        if (layer instanceof leaflet.Marker) {
+          map.removeLayer(layer);
+        }
+      });
+
       offers.forEach((offer) => {
         const { location } = offer;
 
-        leaflet
-          .marker(
-            {
-              lat: location.latitude,
-              lng: location.longitude,
-            },
-            {
-              icon:
-                hoverCard !== null &&
-                hoverCard !== undefined &&
-                hoverCard.id === offer.id
-                  ? currentCustomIcon
-                  : defaultCustomIcon,
-            },
-          )
-          .addTo(map);
+        const marker = leaflet.marker(
+          {
+            lat: location.latitude,
+            lng: location.longitude,
+          },
+          {
+            icon:
+              hoverCard !== null &&
+              hoverCard !== undefined &&
+              hoverCard.id === offer.id
+                ? currentCustomIcon
+                : defaultCustomIcon,
+          },
+        );
+
+        marker.addTo(map);
       });
     }
-  }, [map, propertyId]);
+  }, [map, ids]);
 
   return <div style={{ height: '100%' }} ref={mapRef}></div>;
 }

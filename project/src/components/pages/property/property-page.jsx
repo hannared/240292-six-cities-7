@@ -7,7 +7,7 @@ import { OfferType } from '../../../types';
 import Logo from '../../logo';
 import ReviewsSection from './reviews-section';
 import Navigation from '../../header/navigation';
-import Map from '../main/map';
+import NearbyMap from '../main/nearby-map';
 import NearProperties from './near-properties';
 import {
   fetchCommentsList,
@@ -57,7 +57,6 @@ function PropertyPage(props) {
       {good}
     </li>
   ));
-  const slicedOffers = offers.slice(0, 3);
 
   return (
     <div className="page">
@@ -163,7 +162,7 @@ function PropertyPage(props) {
             </div>
           </div>
           <section className="property__map map">
-            <Map offers={slicedOffers} hoverCard={property} />
+            <NearbyMap hoverCard={property} />
           </section>
         </section>
         <div className="container">
@@ -180,7 +179,7 @@ PropertyPage.propTypes = {
   fetchNearbyOffers: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   fetchComments(offer) {

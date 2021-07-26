@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 function NearProperties(props) {
   const { offers } = props;
 
-  debugger;
-
   const cards = offers.map((offer) => (
     <PropertyCard key={offer.id} offer={offer} />
   ));
