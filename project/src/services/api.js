@@ -38,3 +38,6 @@ export const createAPI = (onUnauthorized) => {
 
 export const isCheckedAuth = (authorizationStatus) =>
   authorizationStatus === AuthorizationStatus.UNKNOWN;
+
+export const isLoggedIn = (authorizationStatus) =>
+  authorizationStatus === AuthorizationStatus.AUTH;
