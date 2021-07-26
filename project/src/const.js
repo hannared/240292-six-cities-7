@@ -2,6 +2,7 @@ import { Paris } from './mocks/cities';
 
 export const AppRoute = {
   LOGIN: '/login',
+  NOT_FOUND: '/not-found',
   FAVORITES: '/favorites',
   OFFER: '/offer/:id?',
   ROOT: '/',

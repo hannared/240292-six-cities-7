@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -20,6 +20,10 @@ function PropertyPage(props) {
   const { offers, fetchComments, fetchNearbyOffers } = props;
 
   const property = offers.find((offer) => offer.id === id);
+
+  if (property === undefined) {
+    return <Redirect to="/404"></Redirect>;
+  }
 
   fetchComments(property);
   fetchNearbyOffers(property);
