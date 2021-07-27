@@ -37,14 +37,13 @@ export const OfferType = PropTypes.shape({
 });
 
 export const ReviewType = PropTypes.shape({
-  propertyId: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
   user: PropTypes.shape({
     id: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
   }).isRequired,
-}).isRequired;
+});

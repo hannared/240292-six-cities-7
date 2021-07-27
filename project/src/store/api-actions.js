@@ -6,6 +6,25 @@ export const fetchOffersList = () => (dispatch, _getState, api) =>
     .get(APIRoute.HOTELS)
     .then(({ data }) => dispatch(ActionCreator.setOffers(data)));
 
+export const fetchCommentsList = (offer) => (dispatch, _getState, api) =>
+  api
+    .get(APIRoute.COMMENTS.replace(':hotel_id', offer.id))
+    .then(({ data }) => dispatch(ActionCreator.setComments(data)));
+
+export const createComment =
+  (offer, comment, rating) => (dispatch, _getState, api) =>
+    api
+      .post(APIRoute.COMMENTS.replace(':hotel_id', offer.id), {
+        comment: comment,
+        rating: rating,
+      })
+      .then(({ data }) => dispatch(fetchCommentsList(offer)));
+
+export const fetchNearbyOffersList = (offer) => (dispatch, _getState, api) =>
+  api
+    .get(APIRoute.NEARBY_HOTELS.replace(':hotel_id', offer.id))
+    .then(({ data }) => dispatch(ActionCreator.setNearbyOffers(data)));
+
 export const checkAuth = () => (dispatch, _getState, api) =>
   api
     .get(APIRoute.LOGIN)

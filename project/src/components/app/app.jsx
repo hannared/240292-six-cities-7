@@ -8,7 +8,7 @@ import PropertyPage from '../pages/property/property-page';
 import FavoritePage from '../pages/favorite/favorite-page';
 import LoginPage from '../pages/login/login-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
-import { OfferType, ReviewType } from '../../types';
+import { OfferType } from '../../types';
 import { isCheckedAuth } from '../../services/api';
 import LoadingScreen from '../loading-screen/loading-screen';
 import browserHistory from '../../browser-history';
@@ -16,7 +16,6 @@ import browserHistory from '../../browser-history';
 function App(props) {
   const { authorizationStatus, isDataLoaded } = props;
   const { offers } = props;
-  const { reviews } = props;
 
   if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
     return <LoadingScreen />;
@@ -29,13 +28,16 @@ function App(props) {
           <MainPage offers={offers} />
         </Route>
         <Route exact path={AppRoute.OFFER}>
-          <PropertyPage offers={offers} reviews={reviews} />
+          <PropertyPage offers={offers} />
         </Route>
         <Route exact path={AppRoute.FAVORITES}>
           <FavoritePage offers={offers} />
         </Route>
         <Route exact path={AppRoute.LOGIN}>
           <LoginPage />
+        </Route>
+        <Route exact path={AppRoute.NOT_FOUND}>
+          <NotFoundPage />
         </Route>
         <Route>
           <NotFoundPage />
@@ -47,7 +49,6 @@ function App(props) {
 
 App.propTypes = {
   offers: PropTypes.arrayOf(OfferType).isRequired,
-  reviews: PropTypes.arrayOf(ReviewType).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   isDataLoaded: PropTypes.bool.isRequired,
 };

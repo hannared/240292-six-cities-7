@@ -2,6 +2,7 @@ import { Paris } from './mocks/cities';
 
 export const AppRoute = {
   LOGIN: '/login',
+  NOT_FOUND: '/not-found',
   FAVORITES: '/favorites',
   OFFER: '/offer/:id?',
   ROOT: '/',
@@ -19,7 +20,9 @@ export const APIRoute = {
   HOTELS: '/hotels',
   HOTEL: '/hotels/:id',
   FAVORITE: '/favorite',
-  IS_FAVORITE: '/favorite/: hotel_id/: status',
+  IS_FAVORITE: '/favorite/:hotel_id/:status',
   LOGIN: '/login',
   LOGOUT: '/logout',
+  COMMENTS: '/comments/:hotel_id',
+  NEARBY_HOTELS: '/hotels/:hotel_id/nearby',
 };

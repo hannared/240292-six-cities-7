@@ -1,4 +1,6 @@
 import React from 'react';
+import dayjs from 'dayjs';
+
 import { ReviewType } from '../../../types';
 
 function Review(props) {
@@ -7,6 +9,7 @@ function Review(props) {
   const { user, comment, date, rating } = review;
   const { avatar, name } = user;
 
+  const dateFormat = dayjs(date).format('MMMM D');
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -24,13 +27,13 @@ function Review(props) {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span className="width: 80%"></span>
+            <span style={{ width: `${(rating * 100) / 5}%` }}></span>
             <span className="visually-hidden">{rating}</span>
           </div>
         </div>
         <p className="reviews__text">{comment}</p>
         <time className="reviews__time" dateTime="2019-04-24">
-          {date}
+          {dateFormat}
         </time>
       </div>
     </li>

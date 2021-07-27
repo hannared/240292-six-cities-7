@@ -10,11 +10,13 @@ function AuthScreen({ onSubmit }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+
     onSubmit({
       login: loginRef.current.value,
       password: passwordRef.current.value,
     });
   };
+
   return (
     <div className="page page--gray page--login">
       <header className="header">
