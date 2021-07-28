@@ -10,6 +10,8 @@ const initialState = {
   nearbyOffers: [],
   authorizationStatus: AuthorizationStatus.UNKNOWN,
   isDataLoaded: false,
+  formInProgress: false,
+  error: '',
 };
 
 // prettier-ignore
@@ -137,6 +139,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         nearbyOffers: action.payload.map(adaptOfferServerToClient),
+      };
+
+    case ActionType.SET_FORM_IN_PROGRESS:
+      return {
+        ...state,
+        formInProgress: action.payload,
+      };
+
+    case ActionType.SET_COMMENT_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:

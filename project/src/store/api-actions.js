@@ -12,13 +12,22 @@ export const fetchCommentsList = (offer) => (dispatch, _getState, api) =>
     .then(({ data }) => dispatch(ActionCreator.setComments(data)));
 
 export const createComment =
-  (offer, comment, rating) => (dispatch, _getState, api) =>
+  (offer, comment, rating) => (dispatch, _getState, api) => {
     api
       .post(APIRoute.COMMENTS.replace(':hotel_id', offer.id), {
         comment: comment,
         rating: rating,
       })
-      .then(({ data }) => dispatch(fetchCommentsList(offer)));
+      .then(({ data }) => {
+        dispatch(ActionCreator.setFormInProgress(false));
+        dispatch(fetchCommentsList(offer));
+      })
+      .catch((error) => {
+        dispatch(
+          ActionCreator.setCommentError('Error occures while sending comment'),
+        );
+      });
+  };
 
 export const fetchNearbyOffersList = (offer) => (dispatch, _getState, api) =>
   api

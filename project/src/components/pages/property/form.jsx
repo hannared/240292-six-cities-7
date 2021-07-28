@@ -5,16 +5,37 @@ import PropTypes from 'prop-types';
 
 import { createComment } from '../../../store/api-actions';
 import { OfferType } from '../../../types';
+import { ActionCreator } from '../../../store/action';
+
+const MAX_LENGTH = 300;
+const MIN_LENGTH = 50;
 
 function Form(props) {
-  const { onSubmit, offer } = props;
+  const { onSubmit, offer, formInProgress, error } = props;
 
   const [rating, setRating] = useState(0);
+  const [text, setText] = useState('');
+
   const commentRef = useRef();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit(offer, commentRef.current.value, rating);
+
+    onSubmit(offer, text, rating);
+
+    setText('');
+    setRating('');
+  };
+
+  const handleTextChange = (evt) => {
+    setText(evt.target.value);
+  };
+
+  const onValidate = () => {
+    if (text.length < MIN_LENGTH) {
+      return true;
+    }
+    return !text || !rating;
   };
 
   return (
@@ -34,8 +55,10 @@ function Form(props) {
           value="5"
           id="5-stars"
           type="radio"
-          checked={rating === '5'}
+          checked={rating === 5}
           onChange={() => setRating(5)}
+          rating={rating}
+          disabled={formInProgress}
         />
         <label
           htmlFor="5-stars"
@@ -53,8 +76,10 @@ function Form(props) {
           value="4"
           id="4-stars"
           type="radio"
-          checked={rating === '4'}
+          checked={rating === 4}
           onChange={() => setRating(4)}
+          rating={rating}
+          disabled={formInProgress}
         />
         <label
           htmlFor="4-stars"
@@ -72,8 +97,10 @@ function Form(props) {
           value="3"
           id="3-stars"
           type="radio"
-          checked={rating === '3'}
+          checked={rating === 3}
           onChange={() => setRating(3)}
+          rating={rating}
+          disabled={formInProgress}
         />
         <label
           htmlFor="3-stars"
@@ -91,8 +118,10 @@ function Form(props) {
           value="2"
           id="2-stars"
           type="radio"
-          checked={rating === '2'}
+          checked={rating === 2}
           onChange={() => setRating(2)}
+          rating={rating}
+          disabled={formInProgress}
         />
         <label
           htmlFor="2-stars"
@@ -110,8 +139,10 @@ function Form(props) {
           value="1"
           id="1-star"
           type="radio"
-          checked={rating === '1'}
+          checked={rating === 1}
           onChange={() => setRating(1)}
+          rating={rating}
+          disabled={formInProgress}
         />
         <label
           htmlFor="1-star"
@@ -129,6 +160,10 @@ function Form(props) {
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         ref={commentRef}
+        maxLength={MAX_LENGTH}
+        value={text}
+        onChange={handleTextChange}
+        disabled={formInProgress}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -139,10 +174,12 @@ function Form(props) {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled=""
+          disabled={onValidate()}
+          onClick={handleSubmit}
         >
           Submit
         </button>
+        <p>{error}</p>
       </div>
     </form>
   );
@@ -151,14 +188,22 @@ function Form(props) {
 Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   offer: OfferType,
+  formInProgress: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  formInProgress: state.formInProgress,
+  error: state.error,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(offer, comment, rating) {
+    dispatch(ActionCreator.setFormInProgress(true));
     dispatch(createComment(offer, comment, rating));
   },
 });
 
 export { Form };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

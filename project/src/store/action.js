@@ -13,6 +13,8 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: 'user/requiredAuthorization',
   LOGOUT: 'user/logout',
   REDIRECT_TO_ROUTE: 'user/redirectToRoute',
+  SET_FORM_IN_PROGRESS: 'InProgress/set',
+  SET_COMMENT_ERROR: 'error/set',
 };
 
 export const ActionCreator = {
@@ -46,6 +48,16 @@ export const ActionCreator = {
   }),
   logout: () => ({
     type: ActionType.LOGOUT,
+  }),
+
+  setFormInProgress: (status) => ({
+    type: ActionType.SET_FORM_IN_PROGRESS,
+    payload: status,
+  }),
+
+  setCommentError: (error) => ({
+    type: ActionCreator.SET_COMMENT_ERROR,
+    payload: error,
   }),
 
   redirectToRoute: (url) => ({
